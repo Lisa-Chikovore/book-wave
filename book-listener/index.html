@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BookWave — Your Books, Out Loud</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="shell">
+
+       
+        <header class="top">
+            <div class="brand">
+                <span class="logo">♫</span>
+                BookWave
+            </div>
+
+            <small>Turn pages into audio</small>
+        </header>
+
+      
+        <section class="hero">
+            <div class="eyebrow">
+                Your Personal Audiobook Player
+            </div>
+
+            <h1>
+                Any book. Your pace.
+                <br>
+                Just press play.
+            </h1>
+
+            <p>
+                Upload a book and listen to it aloud,
+                right in your browser. No account required.
+            </p>
+        </section>
+
+        <div
+            id="drop"
+            class="upload"
+            tabindex="0"
+            role="button"
+            aria-label="Upload book"
+        >
+            <div class="upload-icon">⇧</div>
+
+            <strong>
+                Drop your book here, or choose a file
+            </strong>
+
+            <span>
+                PDF, EPUB, DOCX or TXT · Files stay on your device
+            </span>
+
+            <button
+                class="btn"
+                id="choose"
+                type="button"
+            >
+                Choose a Book
+            </button>
+
+            <input
+                id="file"
+                type="file"
+                accept=".pdf,.epub,.docx,.txt,text/plain,application/pdf"
+                hidden
+            >
+        </div>
+
+      
+        <p
+            id="status"
+            class="status"
+            aria-live="polite"
+        ></p>
+
+        <p class="note">
+            Text-based documents work best.
+            Scanned PDFs require OCR (not included yet).
+        </p>
+
+        
+        <section
+            class="reader"
+            id="reader"
+            aria-label="Book audio player"
+        >
+
+           
+            <div class="card">
+
+                <div class="bookhead">
+
+                    <div class="cover">▤</div>
+
+                    <div>
+                        <div class="eyebrow">
+                            Now Reading
+                        </div>
+
+                        <h2 id="title">
+                            Your Book
+                        </h2>
+
+                        <p id="details">
+                            Ready to listen
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="reading" id="reading">
+                    <span class="placeholder">
+                        Your book will appear here.
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- AUDIO PLAYER -->
+            <aside class="card player">
+
+                <h3>Listen to Your Book</h3>
+
+                <div class="sub" id="chapter">
+                    Ready to listen
+                </div>
+
+                <!-- PROGRESS BAR -->
+                <div
+                    class="track"
+                    id="track"
+                    role="slider"
+                    tabindex="0"
+                    aria-label="Playback position"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                >
+                    <div class="fill" id="fill"></div>
+                </div>
+
+                <div class="progresslabels">
+                    <span id="percent">0% complete</span>
+                    <span id="count">0 / 0 sections</span>
+                </div>
+
+                <!-- PLAYBACK CONTROLS -->
+                <div class="controls">
+
+                    <button
+                        class="round"
+                        id="back"
+                        title="Back five sections"
+                        aria-label="Back five sections"
+                    >
+                        ↶
+                    </button>
+
+                    <button
+                        class="round play"
+                        id="play"
+                        title="Play"
+                        aria-label="Play"
+                    >
+                        ▶
+                    </button>
+
+                    <button
+                        class="round"
+                        id="next"
+                        title="Forward five sections"
+                        aria-label="Forward five sections"
+                    >
+                        ↷
+                    </button>
+
+                </div>
+
+                <!-- VOICE SELECTOR -->
+                <div class="field">
+
+                    <label for="voice">
+                        Narrator Voice
+                    </label>
+
+                    <select id="voice">
+                        <option value="">
+                            Default Voice
+                        </option>
+                    </select>
+
+                </div>
+
+                <!-- READING SPEED -->
+                <div class="field">
+
+                    <div class="sliderline">
+                        <label for="speed">
+                            Reading Speed
+                        </label>
+
+                        <strong id="speedLabel">
+                            1.0×
+                        </strong>
+                    </div>
+
+                    <input
+                        type="range"
+                        id="speed"
+                        min="0.6"
+                        max="2"
+                        step="0.1"
+                        value="1"
+                    >
+
+                </div>
+
+                <!-- OTHER CONTROLS -->
+                <div class="minirow">
+
+                    <button
+                        id="restart"
+                        class="secondary"
+                    >
+                        ↺ Start from Beginning
+                    </button>
+
+                    <button
+                        id="replace"
+                        class="secondary"
+                    >
+                        ＋ Load Another Book
+                    </button>
+
+                </div>
+
+                <p class="helper">
+                    Use the forward and back arrows to skip
+                    sections. Playback depends on your browser's
+                    built-in text-to-speech voices.
+                    Keep this tab open while listening.
+                </p>
+
+            </aside>
+
+        </section>
+
+        <p class="footer">
+            Made for reading without looking at the page · BookWave MVP
+        </p>
+
+    </main>
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.9.1/mammoth.browser.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.93/dist/epub.min.js"></script>
+
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
